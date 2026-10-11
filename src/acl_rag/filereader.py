@@ -10,3 +10,24 @@ def read_pdf_text(pdf_path: str | Path) -> str:
         raise FileNotFoundError(f"File not found: {path}")
 
     reader = PdfReader(str(path))
+    text_parts = [page.extract_text() or "" for page in reader.pages]
+    return "\n".join(text_parts)
+
+
+def read_pdf_documents(pdf_paths: List[str | Path]) -> List[Document]:
+    documents: List[Document] = []
+    for path in pdf_paths:
+        path_obj = Path(path)
+        text = read_pdf_text(path_obj)
+        documents.append(
+            Document(page_content=text, metadata={"source": str(path_obj)})
+        )
+    return documents
+
+
+DOC_PATHS = [
+    "src/data/ajol.pdf",
+    "src/data/single-cell-protein.pdf",
+]
+
+print(read_pdf_documents(DOC_PATHS))
