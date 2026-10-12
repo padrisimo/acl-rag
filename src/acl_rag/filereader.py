@@ -24,10 +24,3 @@ def read_pdf_documents(pdf_paths: List[str | Path]) -> List[Document]:
         )
     return documents
 
-
-DOC_PATHS = [
-    "src/data/ajol.pdf",
-    "src/data/single-cell-protein.pdf",
-]
-
-print(read_pdf_documents(DOC_PATHS))
