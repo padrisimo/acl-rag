@@ -1,5 +1,5 @@
 from deepagents import create_deep_agent
-from langchain.chat_models import init_chat_model
+from langchain_ollama import ChatOllama
 from langchain_core.messages import HumanMessage
 from acl_rag.prompts import (
     RAG_WORKFLOW_INSTRUCTIONS,
@@ -30,10 +30,9 @@ chunk_analyst_subagent = {
 }
 
 
-model = init_chat_model(
-    model="gemini-3.6-flash",
-    model_provider="google_genai",
-    max_retries=5
+model = ChatOllama(
+    model="qwen3:1.7b",
+    temperature=0,
 )
 
 agent = create_deep_agent(
