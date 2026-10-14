@@ -11,6 +11,11 @@ uv run streamlit run src/acl_rag/main.py
 
 ### DEV
 
+install dependencies
+```bash
+uv sync
+```
+
 create virtual enviroment
 ```bash
 uv venv --python 3.12
