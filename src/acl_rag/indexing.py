@@ -2,10 +2,7 @@ from pathlib import Path
 from langchain_core.vectorstores import InMemoryVectorStore
 from langchain_huggingface import HuggingFaceEmbeddings 
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from dotenv import load_dotenv
 from acl_rag.filereader import read_pdf_documents
-
-load_dotenv()
 
 embeddings = HuggingFaceEmbeddings(
     model_name="sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
